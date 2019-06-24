@@ -5,12 +5,24 @@ Write a code that asks the operator for its name and throws an exception if the 
 """
 
 
+def get_info_from_user(param):
+    if(param=="name"):
+        data = input("What is your name ? \n")
+    else:
+        data = input("What is your age ? \n")
+    return data
+def get_exercise_from_user():
+    name = input("What exercise do you want to run:exercise1 or exercise2 ? \n")
+    return name
+
+
 def exercise1():
-    print("Hello, this shit is not working! and sitll not working")
-    pass
+    name = get_info_from_user("name")
+    if(len(name)<=20):
+        print("your name is ", name)
+    else:
+        raise Exception("your name is longer than 20 character.")
 
-
-exercise1()
 
 """
 Exercise 2
@@ -23,8 +35,20 @@ the user if the age given was correct or not
 
 
 def exercise2():
-    print("Hello, this shit is not working! and sitll not working")
-    print("Hello,mya be now it is ?")
+    name = get_info_from_user("age")
+    try:
+        print("you are: ", int(name), "years old")
+    except ValueError:
+        print('the age you entered is not a number, please enter a number')
+
     pass
 
-exercise2()
+
+if __name__ == '__main__':
+    exercise = get_exercise_from_user()
+    if(exercise=="exercise1"):
+        exercise1()
+    elif (exercise=="exercise2"):
+        exercise2()
+    else:
+        print("the option you choosed does not exist, the programm is closing now ")
